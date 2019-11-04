@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>{% block title %}{% endblock %}House Price Prediction</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Livvic&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container">
+        <div class="alert alert-danger" id="errordiv" style="display: none;">
+            <strong>Error!</strong> Failed to GET from API
+            <div id="erromsg">
+
+            </div>
+        </div>
+        <div class="border rounded" id="containerborder">
+            <br>
+            <div class="row">
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                    <h2>House parameters</h2>
+                </div>
+            </div>
+            <br><br>
+            <form method='GET' , action='/getpredictions' class="needs-validation" id="theForm" novalidate>
+                <div class="row">
+                    <div class="col">
+                        <label for="validationCustom01">Ground Living Area</label>
+                        <input type="number" name="GrLivArea" class="form-control" id="validationCustom01" min="300" max="6000" placeholder="between 300 and 6000" required>
+                        <div class="valid-feedback">
+                            Looks good!
+                        </div>
+                    </div>
+                    <div class="col">
+                        <label for="validationCustom02">Size in square feet</label>
+                        <input type="number" name="LotArea" class="form-control" id="validationCustom02" min="1300" max="220000" placeholder="between 1300 and 220000" required>
+                        <div class="valid-feedback">
+                            Looks good!
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col">
+                        <label for="validationCustom02">Total square feet of basement area</label>
+                        <input type="number" name="TotalBsmtSF" class="form-control" id="validationCustom03" min="0" max="6200" placeholder="between 0 and 6200" required>
+                        <div class="valid-feedback">
+                            Looks good!
+                        </div>
+                    </div>
+                    <div class="col">
+                        <label for="validationCustom04">Size of garage in square feet</label>
+                        <input type="number" name="GarageArea" class="form-control" id="validationCustom04" min="0" max="1500" placeholder="between 0 and 1500" required>
+                        <div class="valid-feedback">
+                            Looks good!
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col">
+                        <label for="validationCustom05">Type 1 finished square feet</label>
+                        <input type="number" name="BsmtFinSF1" class="form-control" id="validationCustom05" min="0" max="6000" placeholder="between 0 and 6000" required>
+                        <div class="valid-feedback">
+                            Looks good!
+                        </div>
+                    </div>
+                    <div class="col">
+                        <label for="validationCustom06">Linear feet of street connected to property</label>
+                        <input type="number" name="LotFrontage" class="form-control" id="validationCustom06" min="20" max="350" placeholder="between 20 and 350" required>
+                        <div class="valid-feedback">
+                            Looks good!
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col">
+                        <label for="validationCustom07">Overall condition rating</label>
+                        <input type="number" name="OverallCond" class="form-control" id="validationCustom07" min="1" max="10" placeholder="between 1 and 10" required>
+                        <div class="valid-feedback">
+                            Looks good!
+                        </div>
+                    </div>
+                    <div class="col">
+                        <label for="validationCustom08">Overall material and finish quality</label>
+                        <input type="number" name="OverallQual" class="form-control" id="validationCustom08" min="1" max="10" placeholder="between 1 and 10" required>
+                        <div class="valid-feedback">
+                            Looks good!
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col">
+                        <label for="validationCustom09"> Remodel date</label>
+                        <input type="number" name="YearRemodAdd" class="form-control" id="validationCustom09" min="1950" max="2019" placeholder="between 1950 and 2019" required>
+                        <div class="valid-feedback">
+                            Looks good!
+                        </div>
+                    </div>
+                    <div class="col">
+                        <label for="validationCustom10">Original construction date</label>
+                        <input type="number" name="YearBuilt" class="form-control" id="validationCustom10" min="1890" max="2019" placeholder="between 1890 and 2019" required>
+                        <div class="valid-feedback">
+                            Looks good!
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <br>
+                <input type="submit" value="Predict house price" class="btn btn-outline-primary btn-block" action="">
+            </form>
+        </div>
+        <div class="alert alert-success" id="successdiv" style="display: none;">
+            <strong>Success!</strong>
+            <div class="row">
+                <div class="col">
+                    <h3 id="hprice"></h3>
+                </div>
+
+                <div class="col">
+                    <h3 id="rmse"></h3>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="{{ url_for('static', filename='jsscript.js') }}"></script>
+</body>
+
+</html>

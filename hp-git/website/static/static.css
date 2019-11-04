@@ -1,0 +1,12 @@
+body {
+    font-family: 'Livvic', sans-serif!important;
+}
+
+#containerborder {
+    padding: 50px;
+    border-width: 7px !important;
+}
+
+label {
+    font-weight: bold !important;
+}
