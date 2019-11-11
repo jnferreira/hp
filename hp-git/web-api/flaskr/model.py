@@ -66,8 +66,8 @@ def prepandmodelv2(form):
     return {"prediction": float(preds[0]), "rmse":float(rmse)}
 
 def trainandsave():
-    X_full = pd.read_csv('/home/ubuntu/house-prediction/input/train.csv')
-    X_test_full = pd.read_csv('/home/ubuntu/house-prediction/input/test.csv')
+    X_full = pd.read_csv('/home/ubuntu/hp/hp-git/web-api/input/train.csv')
+    X_test_full = pd.read_csv('/home/ubuntu/hp/hp-git/web-api/input/test.csv')
     print('Train shape:', X_full.shape)
     print('Test shape:', X_test_full.shape)
 
