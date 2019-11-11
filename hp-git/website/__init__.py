@@ -32,7 +32,7 @@ def get_data():
     url_params = urllib.parse.urlencode(form.data)
     #url = "http://127.0.0.1:8001/predict?"
     #url = "http://web:8080/predict?"
-    url = "http://3.133.132.231:8080/predict?"
+    url = "http://3.134.115.216:8080/predict?"
     final_url = url + url_params
     print(final_url, flush=True)
 
