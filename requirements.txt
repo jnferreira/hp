@@ -12,4 +12,3 @@ Flask-API
 pytest
 coverage
 joblib
-gunicorn3
