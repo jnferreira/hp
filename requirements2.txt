@@ -1,3 +1,6 @@
+numpy
+eli5
+sklearn
 xgboost
 seaborn
 wtforms
