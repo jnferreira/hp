@@ -11,3 +11,4 @@ pytest
 coverage
 joblib
 gunicorn
+boto3
