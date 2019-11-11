@@ -1,0 +1,8 @@
+xgboost
+seaborn
+wtforms
+flask_httpauth
+Flask-API
+pytest
+coverage
+joblib
