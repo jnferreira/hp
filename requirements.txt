@@ -1,6 +1,3 @@
 Flask
 pandas
 matplotlib
-numpy
-eli5
-sklearn
